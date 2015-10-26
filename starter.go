@@ -427,6 +427,10 @@ func getKillOldDelay() time.Duration {
 	// Ignore errors.
 	delay, _ := strconv.ParseInt(os.Getenv("KILL_OLD_DELAY"), 10, 0)
 	autoRestart, _ := strconv.ParseBool(os.Getenv("ENABLE_AUTO_RESTART"))
+	
+	fmt.Fprintf(os.Stderr, fmt.Sprint(delay))
+	fmt.Fprintf(os.Stderr, fmt.Sprint(autoRestart))
+	
 	if autoRestart && delay == 0 {
 		delay = 5
 	}
